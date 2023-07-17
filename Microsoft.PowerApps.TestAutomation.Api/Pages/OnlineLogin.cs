@@ -146,7 +146,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         Console.WriteLine("search for toggle");
                         toggle.Click();
                         Console.WriteLine("Toggle"); 
-                        }
+                        
             
                     }
                     
