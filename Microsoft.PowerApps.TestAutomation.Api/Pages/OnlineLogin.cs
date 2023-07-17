@@ -96,18 +96,21 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 driver.ClickWhenAvailable(By.Id("use_another_account_link"));
 
             // Attempt to locate the UserId field
+            Console.WriteLine("locate UserId field");
             driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Login.UserId]));
             driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.UserId]));
 
             var userIdFieldVisible = driver.IsVisible(By.XPath(Elements.Xpath[Reference.Login.UserId]));
             Debug.WriteLine($"Value of userIdFieldVisible: {userIdFieldVisible}");
-
+            Console.WriteLine($"Value of userIdFieldVisible: {userIdFieldVisible}");
             if (userIdFieldVisible)
             {
                 Debug.WriteLine("UserID field is visible. Proceeding with login.");
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.UserId])).SendKeys(username.ToUnsecureString());
+                Console.WriteLine("Type Username");
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.UserId])).SendKeys(Keys.Tab);
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.UserId])).SendKeys(Keys.Enter);
+                Console.WriteLine("Press Enter");
 
                 Thread.Sleep(2000);
                 Console.WriteLine(">>>>>>>>Sleep after login.");
@@ -165,7 +168,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             else
             {
                 Console.WriteLine("UserID field is not visible. This should indicate a previous main page load failure.");
-                Debug.WriteLine(">>>>>>>>>>login");
+                Console.WriteLine(">>>>>>>>>>login");
                 // This scenario should only be hit in the event of a login.microsoftonline.com failure, or a login retry authentication where an authentication token was already retrieved
                 driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.MainPage])
                     , new TimeSpan(0, 2, 0),
