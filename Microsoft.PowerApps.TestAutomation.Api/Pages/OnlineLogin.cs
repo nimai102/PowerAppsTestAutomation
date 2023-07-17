@@ -110,13 +110,13 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.UserId])).SendKeys(Keys.Enter);
 
                 Thread.Sleep(2000);
-                Debug.WriteLine(">>>>>>>>Sleep after login.")
+                Console.WriteLine(">>>>>>>>Sleep after login.");
                 //If expecting redirect then wait for redirect to trigger
                 if (redirectAction != null)
                 {
                     //Wait for redirect to occur.
                     Thread.Sleep(3000);
-                    Debug.WriteLine(">>>>>>>>>>>redirectAction not NULL")
+                    Console.WriteLine(">>>>>>>>>>>redirectAction not NULL");
                     redirectAction?.Invoke(new LoginRedirectEventArgs(username, password, driver));
 
                     redirect = true;
@@ -124,7 +124,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 else
                 {
                     Thread.Sleep(1000);
-                    Debug.WriteLine(">>>>>>>>>>>>>redirectAction NULL")
+                    Console.WriteLine(">>>>>>>>>>>>>redirectAction NULL");
                     driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.LoginPassword])).SendKeys(password.ToUnsecureString());
                     driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.LoginPassword])).SendKeys(Keys.Tab);
                     driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.LoginPassword])).Submit();
@@ -136,7 +136,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     if (staySignedInVisible)
                     {
                         driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn]));
-                        Debug.WriteLine(">>>>>>>>>>StaySignedIn Visible")
+                        Console.WriteLine(">>>>>>>>>>StaySignedIn Visible");
                     }
 
                     driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.MainPage])
@@ -165,7 +165,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             else
             {
                 Console.WriteLine("UserID field is not visible. This should indicate a previous main page load failure.");
-                Debug.WriteLine(">>>>>>>>>>login")
+                Debug.WriteLine(">>>>>>>>>>login");
                 // This scenario should only be hit in the event of a login.microsoftonline.com failure, or a login retry authentication where an authentication token was already retrieved
                 driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.MainPage])
                     , new TimeSpan(0, 2, 0),
