@@ -145,7 +145,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         var toggle = driver.FindElements(By.XPath("//button[contains(@class, 'ms-Toggle')]"));
                         foreach (var button in toggle)
                         {
-                            Console.WriteLine("search for toggle")
+                            Console.WriteLine("search for toggle");
                             button.Click();
                             Console.WriteLine("Toggle"); 
                             break;
