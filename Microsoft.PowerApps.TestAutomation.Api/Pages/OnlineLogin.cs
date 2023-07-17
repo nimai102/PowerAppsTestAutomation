@@ -143,7 +143,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn]));
                         Console.WriteLine(">>>>>>>>>>Click Stay Signed In");
                         Console.WriteLine("search for toggle");
-                        driver.FindElements(By.XPath("//button[contains(@class, 'ms-Toggle')]")).Click();
+                        driver.ClickWhenAvailable(driver.FindElements(By.XPath("//button[contains(@class, 'ms-Toggle')]")));
                         Console.WriteLine("Toggle"); 
                         
             
