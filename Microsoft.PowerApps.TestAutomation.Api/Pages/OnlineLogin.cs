@@ -129,17 +129,19 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     Thread.Sleep(1000);
                     Console.WriteLine(">>>>>>>>>>>>>redirectAction NULL");
                     driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.LoginPassword])).SendKeys(password.ToUnsecureString());
+                    Console.WriteLine("Type Password");
                     driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.LoginPassword])).SendKeys(Keys.Tab);
                     driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.LoginPassword])).Submit();
+                    Console.WriteLine("Press to Login");
 
                     Thread.Sleep(1000);
 
                     var staySignedInVisible = driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn]), new TimeSpan(0, 0, 5));
-
+                    Console.WriteLine($"staySignedInVisible Value: {staySignedInVisible}");
                     if (staySignedInVisible)
                     {
                         driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn]));
-                        Console.WriteLine(">>>>>>>>>>StaySignedIn Visible");
+                        Console.WriteLine(">>>>>>>>>>Click Stay Signed In");
                     }
 
                     driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.MainPage])
@@ -149,14 +151,17 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                             try
                             {
                                 e.WaitUntilVisible(By.ClassName("apps-list"), new TimeSpan(0, 0, 30));
+                                Console.WriteLine("search for ClassName apps-list");
                             }
                             catch (Exception exc)
                             {
                                 Console.WriteLine("The Maker Portal Apps List did not return visible.");
                                 throw new InvalidOperationException($"The Maker Portal Apps List did not return visible.: {exc}");
+                                Console.WriteLine("keine apps-list gefunden")
                             }
 
                             e.WaitForPageToLoad();
+                            Console.WriteLine("Wait for page to load")
                         },
                         f =>
                         {
@@ -168,7 +173,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             else
             {
                 Console.WriteLine("UserID field is not visible. This should indicate a previous main page load failure.");
-                Console.WriteLine(">>>>>>>>>>login");
+                Console.WriteLine("main page load failure");
                 // This scenario should only be hit in the event of a login.microsoftonline.com failure, or a login retry authentication where an authentication token was already retrieved
                 driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.MainPage])
                     , new TimeSpan(0, 2, 0),
