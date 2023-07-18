@@ -49,7 +49,7 @@ namespace Microsoft.PowerApps.TestAutomation.Browser
         public virtual ChromeOptions ToChrome()
         {
             var options = new ChromeOptions();
-            options.add_argument("--remote-debugging-port=9222");
+            options.AddArgument("--remote-debugging-port=9222");
             if (this.StartMaximized)
             {
                 options.AddArgument("--start-maximized");
