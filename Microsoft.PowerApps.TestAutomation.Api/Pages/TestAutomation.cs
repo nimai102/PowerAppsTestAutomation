@@ -136,7 +136,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
         {
 
             driver.Navigate().GoToUrl(uri);
-            if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//div[contains(@class, 'dotAnimationContainer')]")))
+            if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//img[contains(@class, 'appIconNewTheme')]")))
             {
                 Console.WriteLine("Wait for Loading");
                 Thread.Sleep(10000);
