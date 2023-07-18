@@ -132,24 +132,32 @@ namespace Microsoft.PowerApps.TestAutomation.Api
         }
 
         internal void InitiateTest(IWebDriver driver, Uri uri)
-        {
+        {browser.FindElements(By.XPath("//div[contains(@class, 'spinnerCircle')]"));
+
             driver.Navigate().GoToUrl(uri);
-
-            // Wait for page to load
-            driver.WaitForPageToLoad();
-
-            // Wait for fullscreen-app-host
-            driver.WaitUntilVisible(By.Id("fullscreen-app-host"));
-            if (driver.IsVisible(By.Id("fullscreen-app-host")))
+            if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")))
             {
-                Debug.WriteLine("fullscreen-app-host is visible.");
+                Console.WriteLine('Wait for Loading');
+                Thread.Sleep(10000);
             }
             else
             {
-                Debug.WriteLine("fullscreen-app-host is not visible.");
-            }
-        }
 
+                    // Wait for page to load
+                    driver.WaitForPageToLoad();
+        
+                    // Wait for fullscreen-app-host
+                    driver.WaitUntilVisible(By.Id("fullscreen-app-host"));
+                    if (driver.IsVisible(By.Id("fullscreen-app-host")))
+                    {
+                        Debug.WriteLine("fullscreen-app-host is visible.");
+                    }
+                    else
+                    {
+                        Debug.WriteLine("fullscreen-app-host is not visible.");
+                    }
+                }
+            }
         public Tuple<int, int> ReportResultsToDevOps(JObject jObject, int testRunNumber)
         {
             var testExecutionMode = (int)jObject.GetValue("ExecutionMode");
