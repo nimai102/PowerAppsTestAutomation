@@ -134,31 +134,45 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         internal void InitiateTest(IWebDriver driver, Uri uri)
         {
+            int maxRetryAttempts = 3; // Maximale Anzahl von Versuchen
+            int currentAttempt = 0;
 
-            driver.Navigate().GoToUrl(uri);
-            if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//img[contains(@class, 'appIconNewTheme')]")))
+            while (currentAttempt < maxRetryAttempts)
             {
-                Console.WriteLine("Wait for Loading");
-                Thread.Sleep(10000);
-            }
-            else
-            {
-
-                    // Wait for page to load
-                    driver.WaitForPageToLoad();
-        
-                    // Wait for fullscreen-app-host
-                    driver.WaitUntilVisible(By.Id("fullscreen-app-host"));
-                    if (driver.IsVisible(By.Id("fullscreen-app-host")))
-                    {
-                        Debug.WriteLine("fullscreen-app-host is visible.");
-                    }
-                    else
-                    {
-                        Debug.WriteLine("fullscreen-app-host is not visible.");
-                    }
+                try
+                {
+                driver.Navigate().GoToUrl(uri);
+                if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//img[contains(@class, 'appIconNewTheme')]")))
+                {
+                    Console.WriteLine("Wait for Loading");
+                    Thread.Sleep(10000);
+                }
+                else
+                {
+    
+                        // Wait for page to load
+                        driver.WaitForPageToLoad();
+            
+                        // Wait for fullscreen-app-host
+                        driver.WaitUntilVisible(By.Id("fullscreen-app-host"));
+                        if (driver.IsVisible(By.Id("fullscreen-app-host")))
+                        {
+                            Debug.WriteLine("fullscreen-app-host is visible.");
+                        }
+                        else
+                        {
+                            Debug.WriteLine("fullscreen-app-host is not visible.");
+                        }
+                    } break;
+                }
+                catch(Exception exc)
+                {
+                     Thread.Sleep(5000);
+                     Console.WriteLine($"Fehler: {exc.Message}");
+                     currentAttempt++;
                 }
             }
+        }
         public Tuple<int, int> ReportResultsToDevOps(JObject jObject, int testRunNumber)
         {
             var testExecutionMode = (int)jObject.GetValue("ExecutionMode");
