@@ -132,12 +132,12 @@ namespace Microsoft.PowerApps.TestAutomation.Api
         }
 
         internal void InitiateTest(IWebDriver driver, Uri uri)
-        {browser.FindElements(By.XPath("//div[contains(@class, 'spinnerCircle')]"));
+        {
 
             driver.Navigate().GoToUrl(uri);
             if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")))
             {
-                Console.WriteLine('Wait for Loading');
+                Console.WriteLine("Wait for Loading");
                 Thread.Sleep(10000);
             }
             else
