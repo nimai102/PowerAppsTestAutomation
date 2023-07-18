@@ -87,11 +87,11 @@ namespace Microsoft.PowerApps.TestAutomation.Browser
         public virtual EdgeOptions ToEdge()
         {
             var options = new EdgeOptions();
-            
+            options.AddArgument("--remote-debugging-port=9222");
             {
                 PageLoadStrategy = PageLoadStrategy.Normal
             };
-            options.AddArgument("--remote-debugging-port=9222");
+            
             return options;
         }
     }
