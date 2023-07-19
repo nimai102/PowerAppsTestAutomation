@@ -162,7 +162,6 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                             {
                                 Console.WriteLine("The Maker Portal Apps List did not return visible.");
                                 throw new InvalidOperationException($"The Maker Portal Apps List did not return visible.: {exc}");
-                                Console.WriteLine("keine apps-list gefunden");
                             }
 
                             e.WaitForPageToLoad();
