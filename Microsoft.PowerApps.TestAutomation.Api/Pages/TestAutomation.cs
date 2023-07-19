@@ -134,7 +134,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         internal void InitiateTest(IWebDriver driver, Uri uri)
         {
-            int maxRetryAttempts = 3; // Maximale Anzahl von Versuchen
+            int maxRetryAttempts = 5; // Maximale Anzahl von Versuchen
             int currentAttempt = 0;
 
             while (currentAttempt < maxRetryAttempts)
