@@ -50,6 +50,8 @@ namespace Microsoft.PowerApps.TestAutomation.Browser
         {
             var options = new ChromeOptions();
             options.AddArgument("--remote-debugging-port=9222");
+            options.AddArgument("--no-sandbox");
+            options.AddArgument("--disable-setuid-sandbox");
             if (this.StartMaximized)
             {
                 options.AddArgument("--start-maximized");
