@@ -90,7 +90,8 @@ namespace Microsoft.PowerApps.TestAutomation.Browser
             {
                 PageLoadStrategy = PageLoadStrategy.Normal
             };
-            options.addArguments("--remote-debugging-port=9222");
+            options.UseChromium = true;
+            options.AddArgument("--remote-debugging-port=9222");
             return options;
         }
     }
