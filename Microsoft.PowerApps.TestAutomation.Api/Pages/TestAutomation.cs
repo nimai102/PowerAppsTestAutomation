@@ -115,7 +115,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 foreach (var b in buttons)
                 {
                     Console.WriteLine("Suche Sign in");
-                    if (b.Text.Equals("Sign in"))
+                    if (b.Text.Equals("Sign In"))
                     {
                         Console.WriteLine("Sign in?");
                         b.Hover(driver, true);
