@@ -142,6 +142,18 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 try
                 {
                 driver.Navigate().GoToUrl(uri);
+                if ((driver.IsVisible(By.XPath("//div[contains(@class, 'dialog pa__dialog overlay')]")))
+                {
+                    var Buttons = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
+                    foreach (var button in Buttons)
+                    {
+                        if (button.GetAttribute("innerHTML") == "Zulassen")
+                        {
+                            driver.ClickWhenAvailable(button);
+                            break;
+                        }
+                    }
+                }
                 if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//img[contains(@class, 'appIconNewTheme')]")))
                 {
                     Console.WriteLine("Wait for Loading");
