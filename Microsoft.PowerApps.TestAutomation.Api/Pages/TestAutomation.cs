@@ -119,6 +119,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         b.Click(true);
                         b.SendKeys(Keys.Enter);
                         driver.WaitForPageToLoad();
+                        Thread.Sleep(10000);
                     }
                 }
             }
@@ -144,15 +145,19 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 driver.Navigate().GoToUrl(uri);
                 if (driver.IsVisible(By.XPath("//div[contains(@class, 'dialog pa__dialog overlay')]")))
                 {
-                    var Buttons = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
-                    foreach (var button in Buttons)
-                    {
-                        if (button.GetAttribute("innerHTML") == "Zulassen")
-                        {
-                            button.Click(true);
-                            break;
-                        }
-                    } 
+                   // var Buttons = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
+                   // foreach (var button in Buttons)
+                   // {
+                    //    if (button.GetAttribute("innerHTML") == "Zulassen")
+                    //    {
+                    //        button.Click(true);
+                    //        break;
+                    //    }
+                    //}
+                    var buttonZulassung = driver.FindElement(By.XPath("//div[contains(@class, 'dialog-button-container')]//button:first-child"));
+                    buttonZulassung.Click(true);
+                    buttonZulassung.SendKeys(Keys.Enter);
+                    driver.WaitForPageToLoad();      
                     Thread.Sleep(10000);
                 }
                 if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//img[contains(@class, 'appIconNewTheme')]")))
