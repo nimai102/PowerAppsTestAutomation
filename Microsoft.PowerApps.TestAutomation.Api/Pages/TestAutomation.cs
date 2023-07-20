@@ -114,7 +114,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                
                 foreach (var b in buttons)
                 {    
-                    Console.WriteLine($"b.Text");
+                    Console.WriteLine($"ButtonText: {b.Text}");
                     Console.WriteLine("Suche Sign in");
                     if (b.Text.Equals("Sign In"))
                     {
