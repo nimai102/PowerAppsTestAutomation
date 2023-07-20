@@ -106,9 +106,9 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
             var dialogButtons = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.TestAutomation.PermissionDialogButtons]), new TimeSpan(0, 0, 5));
             _resultsDirectory = TestContext.TestResultsDirectory;
-            string location = "{_resultsDirectory}\RunTestAutomation-LoginErrorAttempt99.jpeg";
+            string location = $@"{_resultsDirectory}\RunTestAutomation-LoginErrorAttempt99.jpeg";
             appBrowser.TakeWindowScreenShot(location, OpenQA.Selenium.ScreenshotImageFormat.Jpeg);
-            _testContext.AddResultFile(location)
+            _testContext.AddResultFile(location);
             if (dialogButtons != null)
             {
                 // Should be two buttons (Allow, Don't Allow)
