@@ -111,7 +111,22 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 // Should be two buttons (Allow, Don't Allow)
                 Console.WriteLine("dialogfenster wird geöffnet");
                 var buttons = dialogButtons.FindElements(By.TagName("button"));
+               
+                foreach (var b in buttons)
+                {
+                    if (b.Text.Equals("Sign in"))
+                    {
+                        Console.WriteLine("Sign in?");
+                        b.Hover(driver, true);
+                        b.Click(true);
+                        Console.WriteLine("Sign in gedrückt");
+                        b.SendKeys(Keys.Enter);
+                        driver.WaitForPageToLoad();
+                        Thread.Sleep(10000);
+                    }
+                }
                 
+
                 foreach (var b in buttons)
                 {
                     if (b.Text.Equals("Allow"))
