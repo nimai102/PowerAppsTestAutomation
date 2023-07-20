@@ -149,7 +149,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     {
                         if (button.GetAttribute("innerHTML") == "Zulassen")
                         {
-                            driver.ClickWhenAvailable(button);
+                            button.Click();
                             break;
                         }
                     }
