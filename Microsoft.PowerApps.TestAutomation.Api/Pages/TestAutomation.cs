@@ -152,7 +152,8 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                             button.Click(true);
                             break;
                         }
-                    }
+                    } 
+                    Thread.Sleep(10000);
                 }
                 if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//img[contains(@class, 'appIconNewTheme')]")))
                 {
