@@ -37,6 +37,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
                 // Check for existence of permissions dialog (1st test load for user)
                 CheckForPermissionDialog(driver);
+                CheckForPermissionDialog2(driver);
 
                 // Try to report the sessionId. There is a bit of a race condition here,
                 // so don't do this too close to fullscreen-app-host visibility or it 
@@ -163,8 +164,13 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     }
                 }
             }
-        Console.WriteLine("Vor Suche nach Create angekommen");
-        var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
+        
+        }
+
+        internal void CheckForPermissionDialog2(IWebDriver driver)
+        {
+            Console.WriteLine("Vor Suche nach Create angekommen");
+            var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
                 Console.WriteLine("Suche nach Create zweiter Anlauf");
                 foreach (var but in buttons_create)
                 {    
@@ -179,8 +185,9 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         driver.WaitForPageToLoad();
                         Thread.Sleep(5000);
                     }
-                }Console.WriteLine("Vor Suche nach Create angekommen");
+                }
         }
+        
         internal JObject WaitForTestResults(IWebDriver driver, int maxWaitTimeInSeconds)
         {
             JObject jsonResultString = new JObject();
