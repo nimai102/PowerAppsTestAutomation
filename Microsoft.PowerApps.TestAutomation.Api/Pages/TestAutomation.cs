@@ -127,16 +127,16 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         driver.WaitForPageToLoad();
                         Thread.Sleep(10000);
                         var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
-                        foreach (var b in buttons_create)
+                        foreach (var but in buttons_create)
                         {    
-                            Console.WriteLine($"ButtonText_create: {b.Text}");
-                            if (b.Text.Equals("Create"))
+                            Console.WriteLine($"ButtonText_create: {but.Text}");
+                            if (but.Text.Equals("Create"))
                             {
                                 Console.WriteLine("Create?");
-                                b.Hover(driver, true);
-                                b.Click(true);
+                                but.Hover(driver, true);
+                                but.Click(true);
                                 Console.WriteLine("Create gedrückt");
-                                b.SendKeys(Keys.Enter);
+                                but.SendKeys(Keys.Enter);
                                 driver.WaitForPageToLoad();
                                 Thread.Sleep(10000);
                             }
