@@ -162,7 +162,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     }
                 }
             }
-        }
+      
         var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
                 Console.WriteLine("Suche nach Create zweiter Anlauf");
                 foreach (var but in buttons_create)
@@ -179,6 +179,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         Thread.Sleep(5000);
                     }
                 }
+        }
         internal JObject WaitForTestResults(IWebDriver driver, int maxWaitTimeInSeconds)
         {
             JObject jsonResultString = new JObject();
