@@ -105,10 +105,6 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             driver.SwitchTo().DefaultContent();
 
             var dialogButtons = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.TestAutomation.PermissionDialogButtons]), new TimeSpan(0, 0, 5));
-            foreach (var b in dialogButtons)
-                {    
-                    Console.WriteLine($"ButtonText: {b.Text}");
-                }
 
             if (dialogButtons != null)
             {
@@ -136,6 +132,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
                 foreach (var b in buttons)
                 {
+                    Console.WriteLine($"ButtonText: {b.Text}");
                     if (b.Text.Equals("Allow"))
                     {
                         Console.WriteLine("AllowButton??? Ist da");
