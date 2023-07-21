@@ -129,10 +129,11 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         driver.WaitForPageToLoad();
                         Thread.Sleep(10000);
                     }
-                }
+                }  
+            }
                 Console.WriteLine("Vor Erstellen Button");
                 foreach (var b in buttons_create)
-            
+                {
                     Console.WriteLine($"ButtonText: {b.Text}");
                     if (b.Text.Equals("Create"))
                     {
@@ -162,7 +163,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         Thread.Sleep(10000);
                     }
                 }
-            }
+        }
         
 
         internal JObject WaitForTestResults(IWebDriver driver, int maxWaitTimeInSeconds)
