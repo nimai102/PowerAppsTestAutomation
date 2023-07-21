@@ -37,7 +37,6 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
                 // Check for existence of permissions dialog (1st test load for user)
                 CheckForPermissionDialog(driver);
-                CheckForPermissionDialog2(driver);
 
                 // Try to report the sessionId. There is a bit of a race condition here,
                 // so don't do this too close to fullscreen-app-host visibility or it 
@@ -125,29 +124,12 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         b.Click(true);
                         Console.WriteLine("Sign in gedrückt");
                         b.SendKeys(Keys.Enter);
-                        Console.WriteLine("Sign in gedrückt (Enter)");
                         driver.WaitForPageToLoad();
-                        Thread.Sleep(5000);
-                        
+                        Thread.Sleep(10000);
                     }
-                }Console.WriteLine("Vor Suche nach Create angekommen1");
-                //var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
-                //Console.WriteLine("Suche nach Create");
-                //foreach (var but in buttons_create)
-                //{    
-                //    Console.WriteLine($"ButtonText_create: {but.Text}");
-                //    if (but.Text.Equals("Create"))
-                //    {
-                //        Console.WriteLine("Create?");
-                //        but.Hover(driver, true);
-                //        but.Click(true);
-                //        Console.WriteLine("Create gedrückt");
-                //        but.SendKeys(Keys.Enter);
-                //        driver.WaitForPageToLoad();
-                //       Thread.Sleep(5000);
-                //    }
-                //}
-                Console.WriteLine("Vor Suche nach Create angekommen2");
+                }
+                
+
                 foreach (var b in buttons)
                 {
                     Console.WriteLine($"ButtonText: {b.Text}");
@@ -164,31 +146,8 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     }
                 }
             }
-        
         }
 
-        internal void CheckForPermissionDialog2(IWebDriver driver)
-        {    
-            Thread.Sleep(5000);
-            Console.WriteLine("Vor Suche nach Create angekommen");
-            var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
-                Console.WriteLine("Suche nach Create zweiter Anlauf");
-                foreach (var but in buttons_create)
-                {    
-                    Console.WriteLine($"ButtonText_create: {but.Text}");
-                    if (but.Text.Equals("Create"))
-                    {
-                        Console.WriteLine("Create?");
-                        but.Hover(driver, true);
-                        but.Click(true);
-                        Console.WriteLine("Create gedrückt");
-                        but.SendKeys(Keys.Enter);
-                        driver.WaitForPageToLoad();
-                        Thread.Sleep(5000);
-                    }
-                }
-        }
-        
         internal JObject WaitForTestResults(IWebDriver driver, int maxWaitTimeInSeconds)
         {
             JObject jsonResultString = new JObject();
@@ -206,10 +165,10 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             {
                 try
                 {
-               // driver.Navigate().GoToUrl(uri);
-               // Console.WriteLine("Test geöffnet");
-                //if (driver.IsVisible(By.XPath("//div[contains(@class, 'dialog pa__dialog overlay')]")))
-                //{
+                driver.Navigate().GoToUrl(uri);
+                Console.WriteLine("Test geöffnet");
+                if (driver.IsVisible(By.XPath("//div[contains(@class, 'dialog pa__dialog overlay')]")))
+                {
                    // var Buttons = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
                    // foreach (var button in Buttons)
                    // {
@@ -219,39 +178,37 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     //        break;
                     //    }
                     //}
-                //    var buttonZulassung = driver.FindElement(By.XPath("//div[contains(@class, 'dialog-button-container')]//button:first-child"));
-                //    Console.WriteLine("Suchen nach Button");
-                //    buttonZulassung.Click(true);
-                //    Console.WriteLine("Button gefunden");
-                //    buttonZulassung.SendKeys(Keys.Enter);
-                //    driver.WaitForPageToLoad();      
-                //    Thread.Sleep(10000);
-                //}
-                
+                    var buttonZulassung = driver.FindElement(By.XPath("//div[contains(@class, 'dialog-button-container')]//button:first-child"));
+                    Console.WriteLine("Suchen nach Button");
+                    buttonZulassung.Click(true);
+                    Console.WriteLine("Button gefunden");
+                    buttonZulassung.SendKeys(Keys.Enter);
+                    driver.WaitForPageToLoad();      
+                    Thread.Sleep(10000);
+                }
                 if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//img[contains(@class, 'appIconNewTheme')]")))
                 {
                     Console.WriteLine("Wait for Loading -- Spinning Circle/Bleistift");
                     Thread.Sleep(10000);
                 }
-                    else
-                    {
-        
-                            // Wait for page to load
-                            driver.WaitForPageToLoad();
-                
-                            // Wait for fullscreen-app-host
-                            driver.WaitUntilVisible(By.Id("fullscreen-app-host"));
-                            if (driver.IsVisible(By.Id("fullscreen-app-host")))
-                            {
-                                Debug.WriteLine("fullscreen-app-host is visible.");
-                            }
-                            else
-                            {
-                                Debug.WriteLine("fullscreen-app-host is not visible.");
-                            }
-                        } break;
-
-                    }
+                else
+                {
+    
+                        // Wait for page to load
+                        driver.WaitForPageToLoad();
+            
+                        // Wait for fullscreen-app-host
+                        driver.WaitUntilVisible(By.Id("fullscreen-app-host"));
+                        if (driver.IsVisible(By.Id("fullscreen-app-host")))
+                        {
+                            Debug.WriteLine("fullscreen-app-host is visible.");
+                        }
+                        else
+                        {
+                            Debug.WriteLine("fullscreen-app-host is not visible.");
+                        }
+                    } break;
+                }
                 catch(Exception exc)
                 {
                      Thread.Sleep(5000);
