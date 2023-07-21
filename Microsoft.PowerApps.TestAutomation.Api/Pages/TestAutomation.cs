@@ -105,19 +105,19 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             driver.SwitchTo().DefaultContent();
 
             var dialogButtons = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.TestAutomation.PermissionDialogButtons]), new TimeSpan(0, 0, 5));
-
+            
             if (dialogButtons != null)
             {
                 // Should be two buttons (Allow, Don't Allow)
                 Console.WriteLine("dialogfenster wird geöffnet");
                 var buttons = dialogButtons.FindElements(By.TagName("button"));
                 Console.WriteLine("Suche Connection Button");
-                var buttons_connect = driver.FindElements(By.XPath("//div[contains(@class, 'btn-add-connection btn-primary')]"));
+                var buttons_connect = driver.FindElements(By.XPath("//button[contains(@class, 'btn-add-connection btn-primary')]"));
                 foreach (var b in buttons_connect)
                 {    
                     Console.WriteLine($"ButtonText_connection: {b.Text}");
                     Console.WriteLine("Suche Sign in");
-                    if (b.Text.Equals("Sign In"))
+                    if (b.Text.Equals("Sign in"))
                     {
                         Console.WriteLine("Sign in?");
                         b.Hover(driver, true);
