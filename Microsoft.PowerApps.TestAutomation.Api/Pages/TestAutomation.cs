@@ -124,12 +124,13 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         b.Click(true);
                         Console.WriteLine("Sign in gedrückt");
                         b.SendKeys(Keys.Enter);
+                        Console.WriteLine("Enter gedrückt");
                         driver.WaitForPageToLoad();
                         Thread.Sleep(10000);
                     }
                 }
                 
-
+                Console.WriteLine("Vor Allow Button");
                 foreach (var b in buttons)
                 {
                     Console.WriteLine($"ButtonText: {b.Text}");
