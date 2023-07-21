@@ -124,6 +124,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         b.Click(true);
                         Console.WriteLine("Sign in gedrückt");
                         b.SendKeys(Keys.Enter);
+                        Console.WriteLine("Sign in gedrückt (Enter)");
                         driver.WaitForPageToLoad();
                         Thread.Sleep(5000);
                         
