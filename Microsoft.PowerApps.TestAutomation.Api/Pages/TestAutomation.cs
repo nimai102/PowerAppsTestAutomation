@@ -110,10 +110,10 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             {
                 // Should be two buttons (Allow, Don't Allow)
                 Console.WriteLine("dialogfenster wird geöffnet");
-                var buttons = dialogButtons.FindElements(By.TagName("button"));
+               
                 Console.WriteLine("Suche Connection Button");
                 var buttons_connect = driver.FindElements(By.XPath("//button[contains(@class, 'btn-add-connection btn-primary')]"));
-                var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
+               
                 foreach (var b in buttons_connect)
                 {    
                     Console.WriteLine($"ButtonText_connection: {b.Text}");
@@ -131,6 +131,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     }
                 }  
             }
+                var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
                 Console.WriteLine("Vor Erstellen Button");
                 foreach (var b in buttons_create)
                 {
@@ -147,6 +148,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         Thread.Sleep(10000);
                     }
                 }
+                var buttons = dialogButtons.FindElements(By.TagName("button"));
                 Console.WriteLine("Vor Allow Button");
                 foreach (var b in buttons)
                 {
