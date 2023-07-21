@@ -113,6 +113,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 var buttons = dialogButtons.FindElements(By.TagName("button"));
                 Console.WriteLine("Suche Connection Button");
                 var buttons_connect = driver.FindElements(By.XPath("//button[contains(@class, 'btn-add-connection btn-primary')]"));
+                var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
                 foreach (var b in buttons_connect)
                 {    
                     Console.WriteLine($"ButtonText_connection: {b.Text}");
@@ -130,15 +131,15 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     }
                 }
                 Console.WriteLine("Vor Erstellen Button");
-                foreach (var b in buttons)
+                foreach (var bu in buttons_create)
             
-                    Console.WriteLine($"ButtonText: {b.Text}");
-                    if (b.Text.Equals("Create"))
+                    Console.WriteLine($"ButtonText: {bu.Text}");
+                    if (bu.Text.Equals("Create"))
                     {
                         Console.WriteLine("Create Ist da");
-                        Console.WriteLine($"ButtonText: {b.Text}");
-                        b.Hover(driver, true);
-                        b.Click(true);
+                        Console.WriteLine($"ButtonText: {bu.Text}");
+                        bu.Hover(driver, true);
+                        bu.Click(true);
                         Console.WriteLine("Create ist gedrückt");
                         //b.SendKeys(Keys.Enter);
                         driver.WaitForPageToLoad();
