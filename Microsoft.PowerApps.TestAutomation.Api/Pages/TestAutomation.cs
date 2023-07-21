@@ -204,8 +204,8 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             Console.WriteLine($"Anlauf: {currentAttempt}");
             while (currentAttempt < maxRetryAttempts)
             {
-               // try
-               // {
+                try
+                {
                // driver.Navigate().GoToUrl(uri);
                // Console.WriteLine("Test geöffnet");
                 //if (driver.IsVisible(By.XPath("//div[contains(@class, 'dialog pa__dialog overlay')]")))
@@ -250,13 +250,15 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                                 Debug.WriteLine("fullscreen-app-host is not visible.");
                             }
                         } break;
-            }
+
+                    }
                 catch(Exception exc)
                 {
                      Thread.Sleep(5000);
                      Console.WriteLine($"Fehler: {exc.Message}");
                      currentAttempt++;
                 }
+            }
         }
         public Tuple<int, int> ReportResultsToDevOps(JObject jObject, int testRunNumber)
         {
