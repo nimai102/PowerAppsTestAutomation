@@ -163,7 +163,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     }
                 }
             }
-        }
+        
 
         internal JObject WaitForTestResults(IWebDriver driver, int maxWaitTimeInSeconds)
         {
