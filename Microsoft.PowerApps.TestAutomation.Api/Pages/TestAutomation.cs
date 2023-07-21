@@ -125,8 +125,9 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         Console.WriteLine("Sign in gedrückt");
                         b.SendKeys(Keys.Enter);
                         driver.WaitForPageToLoad();
-                        Thread.Sleep(10000);
+                        Thread.Sleep(5000);
                         var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
+                        Console.WriteLine("Suche nach Create");
                         foreach (var but in buttons_create)
                         {    
                             Console.WriteLine($"ButtonText_create: {but.Text}");
@@ -138,7 +139,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                                 Console.WriteLine("Create gedrückt");
                                 but.SendKeys(Keys.Enter);
                                 driver.WaitForPageToLoad();
-                                Thread.Sleep(10000);
+                                Thread.Sleep(5000);
                             }
                         }
                     }
