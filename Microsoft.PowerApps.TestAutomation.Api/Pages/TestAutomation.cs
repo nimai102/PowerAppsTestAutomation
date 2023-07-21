@@ -129,7 +129,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         Thread.Sleep(5000);
                         
                     }
-                }Console.WriteLine("Vor Suche nach Create angekommen")
+                }Console.WriteLine("Vor Suche nach Create angekommen");
                 //var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
                 //Console.WriteLine("Suche nach Create");
                 //foreach (var but in buttons_create)
@@ -146,7 +146,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 //       Thread.Sleep(5000);
                 //    }
                 //}
-                Console.WriteLine("Vor Suche nach Create angekommen")
+                Console.WriteLine("Vor Suche nach Create angekommen");
                 foreach (var b in buttons)
                 {
                     Console.WriteLine($"ButtonText: {b.Text}");
@@ -179,8 +179,8 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         driver.WaitForPageToLoad();
                         Thread.Sleep(5000);
                     }
-                }
-        }Console.WriteLine("Vor Suche nach Create angekommen")
+                }Console.WriteLine("Vor Suche nach Create angekommen");
+        }
         internal JObject WaitForTestResults(IWebDriver driver, int maxWaitTimeInSeconds)
         {
             JObject jsonResultString = new JObject();
