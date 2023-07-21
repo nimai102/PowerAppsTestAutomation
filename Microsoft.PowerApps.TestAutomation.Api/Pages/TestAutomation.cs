@@ -130,7 +130,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         Thread.Sleep(5000);
                         
                     }
-                }Console.WriteLine("Vor Suche nach Create angekommen");
+                }Console.WriteLine("Vor Suche nach Create angekommen1");
                 //var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
                 //Console.WriteLine("Suche nach Create");
                 //foreach (var but in buttons_create)
@@ -147,7 +147,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 //       Thread.Sleep(5000);
                 //    }
                 //}
-                Console.WriteLine("Vor Suche nach Create angekommen");
+                Console.WriteLine("Vor Suche nach Create angekommen2");
                 foreach (var b in buttons)
                 {
                     Console.WriteLine($"ButtonText: {b.Text}");
@@ -208,8 +208,8 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 {
                 driver.Navigate().GoToUrl(uri);
                 Console.WriteLine("Test geöffnet");
-                if (driver.IsVisible(By.XPath("//div[contains(@class, 'dialog pa__dialog overlay')]")))
-                {
+                //if (driver.IsVisible(By.XPath("//div[contains(@class, 'dialog pa__dialog overlay')]")))
+                //{
                    // var Buttons = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
                    // foreach (var button in Buttons)
                    // {
@@ -219,13 +219,14 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     //        break;
                     //    }
                     //}
-                    var buttonZulassung = driver.FindElement(By.XPath("//div[contains(@class, 'dialog-button-container')]//button:first-child"));
-                    Console.WriteLine("Suchen nach Button");
-                    buttonZulassung.Click(true);
-                    Console.WriteLine("Button gefunden");
-                    buttonZulassung.SendKeys(Keys.Enter);
-                    driver.WaitForPageToLoad();      
-                    Thread.Sleep(10000);
+                //    var buttonZulassung = driver.FindElement(By.XPath("//div[contains(@class, 'dialog-button-container')]//button:first-child"));
+                //    Console.WriteLine("Suchen nach Button");
+                //    buttonZulassung.Click(true);
+                //    Console.WriteLine("Button gefunden");
+                //    buttonZulassung.SendKeys(Keys.Enter);
+                //    driver.WaitForPageToLoad();      
+                //    Thread.Sleep(10000);
+                //}
                 }
                 if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//img[contains(@class, 'appIconNewTheme')]")))
                 {
