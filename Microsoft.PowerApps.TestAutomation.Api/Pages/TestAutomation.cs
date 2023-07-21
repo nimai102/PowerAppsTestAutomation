@@ -162,7 +162,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     }
                 }
             }
-      
+        Console.WriteLine("Vor Suche nach Create angekommen");
         var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
                 Console.WriteLine("Suche nach Create zweiter Anlauf");
                 foreach (var but in buttons_create)
