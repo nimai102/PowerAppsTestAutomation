@@ -129,22 +129,22 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         
                     }
                 }
-                var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
-                Console.WriteLine("Suche nach Create");
-                foreach (var but in buttons_create)
-                {    
-                    Console.WriteLine($"ButtonText_create: {but.Text}");
-                    if (but.Text.Equals("Create"))
-                    {
-                        Console.WriteLine("Create?");
-                        but.Hover(driver, true);
-                        but.Click(true);
-                        Console.WriteLine("Create gedrückt");
-                        but.SendKeys(Keys.Enter);
-                        driver.WaitForPageToLoad();
-                        Thread.Sleep(5000);
-                    }
-                }
+                //var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
+                //Console.WriteLine("Suche nach Create");
+                //foreach (var but in buttons_create)
+                //{    
+                //    Console.WriteLine($"ButtonText_create: {but.Text}");
+                //    if (but.Text.Equals("Create"))
+                //    {
+                //        Console.WriteLine("Create?");
+                //        but.Hover(driver, true);
+                //        but.Click(true);
+                //        Console.WriteLine("Create gedrückt");
+                //        but.SendKeys(Keys.Enter);
+                //        driver.WaitForPageToLoad();
+                //       Thread.Sleep(5000);
+                //    }
+                //}
                
                 foreach (var b in buttons)
                 {
