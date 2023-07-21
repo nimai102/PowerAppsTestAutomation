@@ -112,7 +112,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 Console.WriteLine("dialogfenster wird geöffnet");
                 var buttons = dialogButtons.FindElements(By.TagName("button"));
                 Console.WriteLine("Suche Connection Button");
-                var buttons_connect = driver.FindElements(By.XPath("//div[contains(@class, 'btn btn-add-connection btn-primary')]"));
+                var buttons_connect = driver.FindElements(By.XPath("//div[contains(@class, 'btn-add-connection btn-primary')]"));
                 foreach (var b in buttons_connect)
                 {    
                     Console.WriteLine($"ButtonText: {b.Text}");
@@ -135,6 +135,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     if (b.Text.Equals("Allow"))
                     {
                         Console.WriteLine("AllowButton??? Ist da");
+                        Console.WriteLine($"ButtonText: {b.Text}");
                         b.Hover(driver, true);
                         b.Click(true);
                         Console.WriteLine("AllowButton ist gedrückt");
