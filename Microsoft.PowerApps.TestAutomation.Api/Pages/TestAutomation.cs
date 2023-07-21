@@ -131,15 +131,15 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     }
                 }
                 Console.WriteLine("Vor Erstellen Button");
-                foreach (var bu in buttons_create)
+                foreach (var b in buttons_create)
             
-                    Console.WriteLine($"ButtonText: {bu.Text}");
-                    if (bu.Text.Equals("Create"))
+                    Console.WriteLine($"ButtonText: {b.Text}");
+                    if (b.Text.Equals("Create"))
                     {
                         Console.WriteLine("Create Ist da");
-                        Console.WriteLine($"ButtonText: {bu.Text}");
-                        bu.Hover(driver, true);
-                        bu.Click(true);
+                        Console.WriteLine($"ButtonText: {b.Text}");
+                        b.Hover(driver, true);
+                        b.Click(true);
                         Console.WriteLine("Create ist gedrückt");
                         //b.SendKeys(Keys.Enter);
                         driver.WaitForPageToLoad();
