@@ -123,7 +123,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         b.Hover(driver, true);
                         b.Click(true);
                         Console.WriteLine("Sign in gedrückt");
-                        b.SendKeys(Keys.Enter);
+                       // b.SendKeys(Keys.Enter);
                         Console.WriteLine("Enter gedrückt");
                         driver.WaitForPageToLoad();
                         Thread.Sleep(10000);
