@@ -115,7 +115,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 var buttons_connect = driver.FindElements(By.XPath("//div[contains(@class, 'btn-add-connection btn-primary')]"));
                 foreach (var b in buttons_connect)
                 {    
-                    Console.WriteLine($"ButtonText: {b.Text}");
+                    Console.WriteLine($"ButtonText_connection: {b.Text}");
                     Console.WriteLine("Suche Sign in");
                     if (b.Text.Equals("Sign In"))
                     {
