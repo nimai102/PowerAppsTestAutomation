@@ -111,7 +111,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 // Should be two buttons (Allow, Don't Allow)
                 Console.WriteLine("dialogfenster wird geöffnet");
                 var buttons = dialogButtons.FindElements(By.TagName("button"));
-                Console.WriteLine("Suche Connection Button")
+                Console.WriteLine("Suche Connection Button");
                 var buttons_connect = driver.FindElements(By.XPath("//div[contains(@class, 'btn btn-add-connection btn-primary')]"));
                 foreach (var b in buttons_connect)
                 {    
