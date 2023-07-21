@@ -137,8 +137,8 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     {
                         Console.WriteLine("Create Ist da");
                         Console.WriteLine($"ButtonText: {b.Text}");
-                        b.Hover(driver, true);
-                        b.Click(true);
+                        but.Hover(driver, true);
+                        but.Click(true);
                         Console.WriteLine("Create ist gedrückt");
                         //b.SendKeys(Keys.Enter);
                         driver.WaitForPageToLoad();
