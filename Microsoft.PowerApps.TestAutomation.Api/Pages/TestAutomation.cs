@@ -168,7 +168,8 @@ namespace Microsoft.PowerApps.TestAutomation.Api
         }
 
         internal void CheckForPermissionDialog2(IWebDriver driver)
-        {
+        {    
+            Thread.Sleep(5000);
             Console.WriteLine("Vor Suche nach Create angekommen");
             var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
                 Console.WriteLine("Suche nach Create zweiter Anlauf");
