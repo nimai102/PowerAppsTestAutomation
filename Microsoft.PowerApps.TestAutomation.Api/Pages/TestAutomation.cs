@@ -168,8 +168,8 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         Thread.Sleep(10000);
                     }
                 }
-            }
-        }
+            } return dialogfensterVorhanden;
+        } 
         
 
         internal JObject WaitForTestResults(IWebDriver driver, int maxWaitTimeInSeconds)
