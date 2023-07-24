@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace Microsoft.PowerApps.TestAutomation.Api
 {
-    var dialogfensterVorhanden = false;
+    
     /// <summary>
     ///   Test Automation methods.
     ///  </summary>
