@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace Microsoft.PowerApps.TestAutomation.Api
 {
-
+    var dialogfensterVorhanden = false;
     /// <summary>
     ///   Test Automation methods.
     ///  </summary>
@@ -103,12 +103,12 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         }
 
-        internal CheckForPermissionDialog(IWebDriver driver)
+        internal void CheckForPermissionDialog(IWebDriver driver)
         {
             // Switch to default content
             driver.SwitchTo().DefaultContent();
             var dialogButtons = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.TestAutomation.PermissionDialogButtons]), new TimeSpan(0, 0, 5));
-            var dialogfensterVorhanden = false;
+           
             if (dialogButtons != null)
             {
                 // Should be two buttons (Allow, Don't Allow)
@@ -168,7 +168,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         Thread.Sleep(10000);
                     }
                 }
-            } return dialogfensterVorhanden;
+            } 
         } 
         
 
