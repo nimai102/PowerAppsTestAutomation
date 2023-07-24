@@ -30,7 +30,8 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         public BrowserCommandResult<JObject> ExecuteTestAutomation(Uri uri, int testRunNumber, int maxWaitTimeInSeconds)
         {
-            var dialogfensterVorhanden = false;
+            public bool dialogfensterVorhanden { get; set; };
+            dialogfensterVorhanden = false;
             return this.Execute(GetOptions("Execute Test Automation"), driver =>
             {
                 // Navigate to TestSuite or TestCase URL
@@ -105,12 +106,12 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         }
 
-        internal bool CheckForPermissionDialog(IWebDriver driver)
+        internal CheckForPermissionDialog(IWebDriver driver)
         {
             // Switch to default content
             driver.SwitchTo().DefaultContent();
             var dialogButtons = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.TestAutomation.PermissionDialogButtons]), new TimeSpan(0, 0, 5));
-           
+            public bool dialogfensterVorhanden { get; set; };
             if (dialogButtons != null)
             {
                 // Should be two buttons (Allow, Don't Allow)
@@ -170,7 +171,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         Thread.Sleep(10000);
                     }
                 }
-            } return dialogfensterVorhanden;
+            } 
         } 
         
 
