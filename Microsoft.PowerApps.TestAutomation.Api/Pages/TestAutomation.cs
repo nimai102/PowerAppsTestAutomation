@@ -169,7 +169,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         Thread.Sleep(10000);
                     }
                 }
-            } return dialogfensterVorhanden
+            } return dialogfensterVorhanden;
         } 
         
 
