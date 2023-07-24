@@ -36,8 +36,8 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 InitiateTest(driver, uri);
                 Console.WriteLine("Test initialisiert");
                 // Check for existence of permissions dialog (1st test load for user)
-                CheckForPermissionDialog(driver);
                 Console.WriteLine("Permission gecheckt");
+                CheckForPermissionDialog(driver);
                 // Try to report the sessionId. There is a bit of a race condition here,
                 // so don't do this too close to fullscreen-app-host visibility or it 
                 // will fail to find Core or some other namespace.
@@ -147,7 +147,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         driver.WaitForPageToLoad();
                     
                         Thread.Sleep(60000);
-                         Console.WriteLine("Minute gewartet");
+                        Console.WriteLine("Minute gewartet");
                     }
                 }
                 var buttons = dialogButtons.FindElements(By.TagName("button"));
@@ -162,7 +162,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         b.Hover(driver, true);
                         b.Click(true);
                         Console.WriteLine("AllowButton ist gedrückt");
-                        b.SendKeys(Keys.Enter);
+                        //b.SendKeys(Keys.Enter);
                         driver.WaitForPageToLoad();
                         Thread.Sleep(10000);
                     }
