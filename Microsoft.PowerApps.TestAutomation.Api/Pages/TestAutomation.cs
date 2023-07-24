@@ -115,7 +115,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
                 
         
-            
+            Console.WriteLine("Check for Persmissions");
             // Switch to default content
             driver.SwitchTo().DefaultContent();
             var dialogButtons = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.TestAutomation.PermissionDialogButtons]), new TimeSpan(0, 0, 5));
