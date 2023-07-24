@@ -35,15 +35,12 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             {
                 // Navigate to TestSuite or TestCase URL
                 
-                InitiateTest(driver, uri);
+                //InitiateTest(driver, uri);
                 Console.WriteLine("Test initialisiert");
                 // Check for existence of permissions dialog (1st test load for user)
                 CheckForPermissionDialog(driver);
                 Console.WriteLine("Permission gecheckt");
-                if (dialogfensterVorhanden == true)
-                    {
-                       InitiateTest(driver, uri);
-                    }
+           
                 // Try to report the sessionId. There is a bit of a race condition here,
                 // so don't do this too close to fullscreen-app-host visibility or it 
                 // will fail to find Core or some other namespace.
@@ -107,15 +104,38 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         internal CheckForPermissionDialog(IWebDriver driver)
         {
+            
+            while (currentAttempt < maxRetryAttempts)
+            {
+                try
+                {
+                Console.WriteLine($"Anlauf: {currentAttempt}");
+                driver.Navigate().GoToUrl(uri);
+                Console.WriteLine("Test geöffnet");
+               
+                if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//img[contains(@class, 'appIconNewTheme')]")))
+                {
+                    Console.WriteLine("Wait for Loading -- Spinning Circle/Bleistift");
+                    Thread.Sleep(10000);
+                }
+
+                }
+                catch(Exception exc)
+                {
+                     Thread.Sleep(5000);
+                     Console.WriteLine($"Fehler: {exc.Message}");
+                     currentAttempt++;
+                }
+            }
+        
+            
             // Switch to default content
             driver.SwitchTo().DefaultContent();
             var dialogButtons = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.TestAutomation.PermissionDialogButtons]), new TimeSpan(0, 0, 5));
-            public bool dialogfensterVorhanden { get; set; }
             if (dialogButtons != null)
             {
                 // Should be two buttons (Allow, Don't Allow)
                 Console.WriteLine("dialogfenster wird geöffnet");
-                dialogfensterVorhanden = true;
                 Console.WriteLine("Suche Connection Button");
                 var buttons_connect = driver.FindElements(By.XPath("//button[contains(@class, 'btn-add-connection btn-primary')]"));
                
