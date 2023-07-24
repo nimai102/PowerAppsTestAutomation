@@ -102,7 +102,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         }
 
-        internal CheckForPermissionDialog(IWebDriver driver)
+        internal void CheckForPermissionDialog(IWebDriver driver)
         {
             
             while (currentAttempt < maxRetryAttempts)
