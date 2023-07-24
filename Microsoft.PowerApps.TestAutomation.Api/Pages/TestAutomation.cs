@@ -110,7 +110,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             // Switch to default content
             driver.SwitchTo().DefaultContent();
             var dialogButtons = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.TestAutomation.PermissionDialogButtons]), new TimeSpan(0, 0, 5));
-            public bool dialogfensterVorhanden { get; set; };
+            public bool dialogfensterVorhanden { get; set; }
             if (dialogButtons != null)
             {
                 // Should be two buttons (Allow, Don't Allow)
