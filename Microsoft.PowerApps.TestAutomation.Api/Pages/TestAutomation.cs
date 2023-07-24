@@ -33,6 +33,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             return this.Execute(GetOptions("Execute Test Automation"), driver =>
             {
                 // Navigate to TestSuite or TestCase URL
+                var dialogfensterVorhanden = false;
                 InitiateTest(driver, uri);
                 Console.WriteLine("Test initialisiert");
                 // Check for existence of permissions dialog (1st test load for user)
