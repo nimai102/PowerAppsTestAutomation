@@ -32,12 +32,12 @@ namespace Microsoft.PowerApps.TestAutomation.Api
         {
             return this.Execute(GetOptions("Execute Test Automation"), driver =>
             {
-
-
-                // Check for existence of permissions dialog (1st test load for user)
-                CheckForPermissionDialog(driver);
                 // Navigate to TestSuite or TestCase URL
                 InitiateTest(driver, uri);
+                Console.WriteLine("Test initialisiert");
+                // Check for existence of permissions dialog (1st test load for user)
+                CheckForPermissionDialog(driver);
+                Console.WriteLine("Permission gecheckt");
                 // Try to report the sessionId. There is a bit of a race condition here,
                 // so don't do this too close to fullscreen-app-host visibility or it 
                 // will fail to find Core or some other namespace.
@@ -110,9 +110,10 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             {
                 // Should be two buttons (Allow, Don't Allow)
                 Console.WriteLine("dialogfenster wird geöffnet");
-                var buttons = dialogButtons.FindElements(By.TagName("button"));
+               
                 Console.WriteLine("Suche Connection Button");
                 var buttons_connect = driver.FindElements(By.XPath("//button[contains(@class, 'btn-add-connection btn-primary')]"));
+               
                 foreach (var b in buttons_connect)
                 {    
                     Console.WriteLine($"ButtonText_connection: {b.Text}");
@@ -123,13 +124,32 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         b.Hover(driver, true);
                         b.Click(true);
                         Console.WriteLine("Sign in gedrückt");
-                        b.SendKeys(Keys.Enter);
+                       // b.SendKeys(Keys.Enter);
+                       // Console.WriteLine("Enter gedrückt");
                         driver.WaitForPageToLoad();
                         Thread.Sleep(10000);
                     }
                 }
-                
-
+            
+                var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
+                Console.WriteLine("Vor Erstellen Button");
+                foreach (var b in buttons_create)
+                {
+                    Console.WriteLine($"ButtonText: {b.Text}");
+                    if (b.Text.Equals("Create"))
+                    {
+                        Console.WriteLine("Create Ist da");
+                        Console.WriteLine($"ButtonText: {b.Text}");
+                        b.Hover(driver, true);
+                        b.Click(true);
+                        Console.WriteLine("Create ist gedrückt");
+                        //b.SendKeys(Keys.Enter);
+                        driver.WaitForPageToLoad();
+                        Thread.Sleep(20000);
+                    }
+                }
+                var buttons = dialogButtons.FindElements(By.TagName("button"));
+                Console.WriteLine("Vor Allow Button");
                 foreach (var b in buttons)
                 {
                     Console.WriteLine($"ButtonText: {b.Text}");
@@ -147,6 +167,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 }
             }
         }
+        
 
         internal JObject WaitForTestResults(IWebDriver driver, int maxWaitTimeInSeconds)
         {
@@ -160,32 +181,14 @@ namespace Microsoft.PowerApps.TestAutomation.Api
         {
             int maxRetryAttempts = 5; // Maximale Anzahl von Versuchen
             int currentAttempt = 0;
-            Console.WriteLine($"Anlauf: {currentAttempt}");
             while (currentAttempt < maxRetryAttempts)
             {
                 try
                 {
+                Console.WriteLine($"Anlauf: {currentAttempt}");
                 driver.Navigate().GoToUrl(uri);
                 Console.WriteLine("Test geöffnet");
-                if (driver.IsVisible(By.XPath("//div[contains(@class, 'dialog pa__dialog overlay')]")))
-                {
-                   // var Buttons = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
-                   // foreach (var button in Buttons)
-                   // {
-                    //    if (button.GetAttribute("innerHTML") == "Zulassen")
-                    //    {
-                    //        button.Click(true);
-                    //        break;
-                    //    }
-                    //}
-                    var buttonZulassung = driver.FindElement(By.XPath("//div[contains(@class, 'dialog-button-container')]//button:first-child"));
-                    Console.WriteLine("Suchen nach Button");
-                    buttonZulassung.Click(true);
-                    Console.WriteLine("Button gefunden");
-                    buttonZulassung.SendKeys(Keys.Enter);
-                    driver.WaitForPageToLoad();      
-                    Thread.Sleep(10000);
-                }
+               
                 if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//img[contains(@class, 'appIconNewTheme')]")))
                 {
                     Console.WriteLine("Wait for Loading -- Spinning Circle/Bleistift");
