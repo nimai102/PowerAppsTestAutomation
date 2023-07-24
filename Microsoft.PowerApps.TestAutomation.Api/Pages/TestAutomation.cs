@@ -37,7 +37,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 InitiateTest(driver, uri);
                 Console.WriteLine("Test initialisiert");
                 // Check for existence of permissions dialog (1st test load for user)
-                CheckForPermissionDialog(driver, Uri uri);
+                CheckForPermissionDialog(driver, uri);
                 Console.WriteLine("Permission gecheckt");
            
                 // Try to report the sessionId. There is a bit of a race condition here,
