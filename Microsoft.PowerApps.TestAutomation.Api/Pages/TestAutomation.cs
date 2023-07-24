@@ -103,7 +103,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         }
 
-        internal void CheckForPermissionDialog(IWebDriver driver)
+        internal CheckForPermissionDialog(IWebDriver driver)
         {
             // Switch to default content
             driver.SwitchTo().DefaultContent();
