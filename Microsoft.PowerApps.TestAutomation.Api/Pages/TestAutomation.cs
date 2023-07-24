@@ -32,12 +32,12 @@ namespace Microsoft.PowerApps.TestAutomation.Api
         {
             return this.Execute(GetOptions("Execute Test Automation"), driver =>
             {
-                // Navigate to TestSuite or TestCase URL
-                InitiateTest(driver, uri);
+
 
                 // Check for existence of permissions dialog (1st test load for user)
                 CheckForPermissionDialog(driver);
-
+                // Navigate to TestSuite or TestCase URL
+                InitiateTest(driver, uri);
                 // Try to report the sessionId. There is a bit of a race condition here,
                 // so don't do this too close to fullscreen-app-host visibility or it 
                 // will fail to find Core or some other namespace.
