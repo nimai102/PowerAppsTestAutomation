@@ -104,7 +104,6 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         internal void CheckForPermissionDialog(IWebDriver driver, Uri uri)
         {  
-                Console.WriteLine($"Anlauf: {currentAttempt}");
                 driver.Navigate().GoToUrl(uri);
                 Console.WriteLine("Test Checkgeöffnet");
                
