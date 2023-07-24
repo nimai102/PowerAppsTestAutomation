@@ -118,7 +118,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//img[contains(@class, 'appIconNewTheme')]")))
                 {
                     Console.WriteLine("Wait for Loading -- Spinning Circle/Bleistift");
-                    Thread.Sleep(10000);
+                    Thread.Sleep(1000);
                 }
 
                 }
@@ -219,7 +219,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//img[contains(@class, 'appIconNewTheme')]")))
                 {
                     Console.WriteLine("Wait for Loading -- Spinning Circle/Bleistift");
-                    Thread.Sleep(10000);
+                    Thread.Sleep(1000);
                 }
                 else
                 {
