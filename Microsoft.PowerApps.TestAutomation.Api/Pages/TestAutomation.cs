@@ -30,7 +30,6 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         public BrowserCommandResult<JObject> ExecuteTestAutomation(Uri uri, int testRunNumber, int maxWaitTimeInSeconds)
         {
-            bool dialogfensterVorhanden = false;
             return this.Execute(GetOptions("Execute Test Automation"), driver =>
             {
                 // Navigate to TestSuite or TestCase URL
@@ -103,7 +102,9 @@ namespace Microsoft.PowerApps.TestAutomation.Api
         }
 
         internal void CheckForPermissionDialog(IWebDriver driver)
-        {
+        {  
+            int maxRetryAttempts = 5; // Maximale Anzahl von Versuchen
+            int currentAttempt = 0;
             
             while (currentAttempt < maxRetryAttempts)
             {
