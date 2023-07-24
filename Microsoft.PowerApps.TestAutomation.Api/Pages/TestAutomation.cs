@@ -34,10 +34,10 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             {
                 // Navigate to TestSuite or TestCase URL
                 
-                //InitiateTest(driver, uri);
+                InitiateTest(driver, uri);
                 Console.WriteLine("Test initialisiert");
                 // Check for existence of permissions dialog (1st test load for user)
-                CheckForPermissionDialog(driver);
+                CheckForPermissionDialog(driver, Uri uri);
                 Console.WriteLine("Permission gecheckt");
            
                 // Try to report the sessionId. There is a bit of a race condition here,
