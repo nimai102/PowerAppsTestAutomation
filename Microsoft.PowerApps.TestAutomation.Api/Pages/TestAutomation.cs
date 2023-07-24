@@ -33,7 +33,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             return this.Execute(GetOptions("Execute Test Automation"), driver =>
             {
                 // Navigate to TestSuite or TestCase URL
-                
+                var dialogfensterVorhanden = false;
                 InitiateTest(driver, uri);
                 Console.WriteLine("Test initialisiert");
                 // Check for existence of permissions dialog (1st test load for user)
@@ -109,7 +109,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             // Switch to default content
             driver.SwitchTo().DefaultContent();
             var dialogButtons = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.TestAutomation.PermissionDialogButtons]), new TimeSpan(0, 0, 5));
-            var dialogfensterVorhanden = false;
+           
             if (dialogButtons != null)
             {
                 // Should be two buttons (Allow, Don't Allow)
