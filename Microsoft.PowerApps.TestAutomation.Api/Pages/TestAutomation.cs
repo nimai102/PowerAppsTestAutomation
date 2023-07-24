@@ -180,32 +180,14 @@ namespace Microsoft.PowerApps.TestAutomation.Api
         {
             int maxRetryAttempts = 5; // Maximale Anzahl von Versuchen
             int currentAttempt = 0;
-            Console.WriteLine($"Anlauf: {currentAttempt}");
             while (currentAttempt < maxRetryAttempts)
             {
                 try
                 {
+                Console.WriteLine($"Anlauf: {currentAttempt}");
                 driver.Navigate().GoToUrl(uri);
                 Console.WriteLine("Test geöffnet");
-                if (driver.IsVisible(By.XPath("//div[contains(@class, 'dialog pa__dialog overlay')]")))
-                {
-                   // var Buttons = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
-                   // foreach (var button in Buttons)
-                   // {
-                    //    if (button.GetAttribute("innerHTML") == "Zulassen")
-                    //    {
-                    //        button.Click(true);
-                    //        break;
-                    //    }
-                    //}
-                    var buttonZulassung = driver.FindElement(By.XPath("//div[contains(@class, 'dialog-button-container')]//button:first-child"));
-                    Console.WriteLine("Suchen nach Button");
-                    buttonZulassung.Click(true);
-                    Console.WriteLine("Button gefunden");
-                    buttonZulassung.SendKeys(Keys.Enter);
-                    driver.WaitForPageToLoad();      
-                    Thread.Sleep(10000);
-                }
+               
                 if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//img[contains(@class, 'appIconNewTheme')]")))
                 {
                     Console.WriteLine("Wait for Loading -- Spinning Circle/Bleistift");
