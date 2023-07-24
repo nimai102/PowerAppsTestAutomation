@@ -101,7 +101,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         }
 
-        internal void CheckForPermissionDialog(IWebDriver driver)
+        internal void CheckForPermissionDialog(IWebDriver driver, Uri uri)
         {  
             int maxRetryAttempts = 5; // Maximale Anzahl von Versuchen
             int currentAttempt = 0;
