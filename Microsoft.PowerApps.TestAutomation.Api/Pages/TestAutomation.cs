@@ -38,7 +38,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 // Check for existence of permissions dialog (1st test load for user)
                 CheckForPermissionDialog(driver);
                 Console.WriteLine("Permission gecheckt");
-                if dialogfensterVorhanden = true
+                if (dialogfensterVorhanden = true)
                     {
                        InitiateTest(driver, uri);
                     }
