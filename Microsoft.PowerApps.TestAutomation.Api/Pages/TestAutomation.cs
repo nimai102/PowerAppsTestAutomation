@@ -104,16 +104,9 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         internal void CheckForPermissionDialog(IWebDriver driver, Uri uri)
         {  
-            int maxRetryAttempts = 5; // Maximale Anzahl von Versuchen
-            int currentAttempt = 0;
-            
-            while (currentAttempt < maxRetryAttempts)
-            {
-                try
-                {
                 Console.WriteLine($"Anlauf: {currentAttempt}");
                 driver.Navigate().GoToUrl(uri);
-                Console.WriteLine("Test geöffnet");
+                Console.WriteLine("Test Checkgeöffnet");
                
                 if (driver.IsVisible(By.XPath("//div[contains(@class, 'spinnerCircle')]")) || driver.IsVisible(By.XPath("//img[contains(@class, 'appIconNewTheme')]")))
                 {
@@ -121,14 +114,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                     Thread.Sleep(1000);
                 }
 
-                }
-                catch(Exception exc)
-                {
-                     Thread.Sleep(5000);
-                     Console.WriteLine($"Fehler: {exc.Message}");
-                     currentAttempt++;
-                }
-            }
+                
         
             
             // Switch to default content
