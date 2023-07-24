@@ -113,7 +113,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                 Console.WriteLine("Press Enter");
 
                 Thread.Sleep(2000);
-                Console.WriteLine(">>>>>>>>Sleep after login.");
+                Console.WriteLine(">>>>>>>>Sleep after Username.");
                 //If expecting redirect then wait for redirect to trigger
                 if (redirectAction != null)
                 {
