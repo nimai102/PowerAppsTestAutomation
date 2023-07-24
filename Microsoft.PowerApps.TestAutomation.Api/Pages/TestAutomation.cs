@@ -129,8 +129,8 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         driver.WaitForPageToLoad();
                         Thread.Sleep(10000);
                     }
-                }  
-            }
+                }
+            
                 var buttons_create = driver.FindElements(By.XPath("//button[contains(@class, 'dialog-button')]"));
                 Console.WriteLine("Vor Erstellen Button");
                 foreach (var b in buttons_create)
@@ -165,6 +165,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         Thread.Sleep(10000);
                     }
                 }
+            }
         }
         
 
