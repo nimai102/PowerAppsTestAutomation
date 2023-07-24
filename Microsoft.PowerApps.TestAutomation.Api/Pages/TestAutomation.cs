@@ -30,8 +30,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         public BrowserCommandResult<JObject> ExecuteTestAutomation(Uri uri, int testRunNumber, int maxWaitTimeInSeconds)
         {
-            public bool dialogfensterVorhanden { get; set; };
-            dialogfensterVorhanden = false;
+            bool dialogfensterVorhanden = false;
             return this.Execute(GetOptions("Execute Test Automation"), driver =>
             {
                 // Navigate to TestSuite or TestCase URL
