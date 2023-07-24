@@ -30,10 +30,11 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         public BrowserCommandResult<JObject> ExecuteTestAutomation(Uri uri, int testRunNumber, int maxWaitTimeInSeconds)
         {
+            var dialogfensterVorhanden = false;
             return this.Execute(GetOptions("Execute Test Automation"), driver =>
             {
                 // Navigate to TestSuite or TestCase URL
-                var dialogfensterVorhanden = false;
+                
                 InitiateTest(driver, uri);
                 Console.WriteLine("Test initialisiert");
                 // Check for existence of permissions dialog (1st test load for user)
