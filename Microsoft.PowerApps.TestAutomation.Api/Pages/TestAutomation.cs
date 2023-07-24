@@ -145,7 +145,9 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         Console.WriteLine("Create ist gedrückt");
                         //b.SendKeys(Keys.Enter);
                         driver.WaitForPageToLoad();
-                        Thread.Sleep(20000);
+                    
+                        Thread.Sleep(60000);
+                         Console.WriteLine("Minute gewartet");
                     }
                 }
                 var buttons = dialogButtons.FindElements(By.TagName("button"));
