@@ -33,13 +33,13 @@ namespace Microsoft.PowerApps.TestAutomation.Api
             return this.Execute(GetOptions("Execute Test Automation"), driver =>
             {
                 // Navigate to TestSuite or TestCase URL
-                var dialogfensterVorhanden = false;
+                
                 InitiateTest(driver, uri);
                 Console.WriteLine("Test initialisiert");
                 // Check for existence of permissions dialog (1st test load for user)
                 CheckForPermissionDialog(driver);
                 Console.WriteLine("Permission gecheckt");
-                if (dialogfensterVorhanden = true)
+                if (dialogfensterVorhanden == true)
                     {
                        InitiateTest(driver, uri);
                     }
@@ -104,12 +104,12 @@ namespace Microsoft.PowerApps.TestAutomation.Api
 
         }
 
-        internal void CheckForPermissionDialog(IWebDriver driver)
+        internal CheckForPermissionDialog(IWebDriver driver)
         {
             // Switch to default content
             driver.SwitchTo().DefaultContent();
             var dialogButtons = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.TestAutomation.PermissionDialogButtons]), new TimeSpan(0, 0, 5));
-           
+            var dialogfensterVorhanden = false;
             if (dialogButtons != null)
             {
                 // Should be two buttons (Allow, Don't Allow)
@@ -169,7 +169,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         Thread.Sleep(10000);
                     }
                 }
-            } 
+            } return dialogfensterVorhanden
         } 
         
 
