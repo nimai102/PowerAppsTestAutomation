@@ -146,7 +146,7 @@ namespace Microsoft.PowerApps.TestAutomation.Api
                         //b.SendKeys(Keys.Enter);
                         driver.WaitForPageToLoad();
                     
-                       Thread.Sleep(180000);
+                       Thread.Sleep(300000);
                         Console.WriteLine("3min gewartet");
                     }
                 }
